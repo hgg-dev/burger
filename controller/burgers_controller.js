@@ -4,17 +4,23 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 router.get("/", function (req, res) {
-
-  var test = 0;
-  res.render("index", { title: 'Hey', message: 'Hello there!' });
-  // res.json("It works");
+  burger.all(function(data){
+    var allResult = {
+      burgers: data
+    };
+    console.log("controller return:" + allResult)
+    res.render("index", allResult);
+  });
 });
-
 
 router.post("/api/add-burger", function (req, res) {
 
-  var burgerAdd = req.body.burger;
+  var burgerAdd = req.body;
 
+  burger.insertOne([burgerAdd.name],function(data){
+
+   console.log("complete")
+  });
 
 });
 

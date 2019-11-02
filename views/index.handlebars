@@ -1,48 +1,32 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Burger King!</h1>
-            <h2>What do you want to eat?</h2>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Burger King!</h1>
+      <h2>What do you want to eat?</h2>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul>
+        {{#each burgers}}
+        <h3>{{burger_name}}</h3>
+        {{/each}}
+      </ul>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <form class="create-form">
+    <div class="col-md-6">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form class="create-form entry-form">
 
-                <div class="form-group">
-                    <input type="text" id="burgeradd" name="burger" placeholder="Burger you would like to eat?">
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+        <div class="form-group">
+          <input type="text" id="burgeradd" name="burger" placeholder="Burger you would like to eat?"
+            style="margin: 30px; font-size: 20px">
         </div>
+        <button type="submit" class="create-form">Submit</button>
+      </form>
     </div>
+  </div>
 </div>
 
-<script>
-  
-</script>
-
-
-{{!-- <ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}} 
-    {{/unless}}
-  {{/each}}
-
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul> --}}

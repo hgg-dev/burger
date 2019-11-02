@@ -1,22 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-		<title>Burger King!</title>
-		<script src="https://code.jquery.com/jquery.js"></script>
-        <script scr="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-        <style>
-            h1 {
-                color:coral;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                font-size: 40px;
-                text-align: center
-                
-            }
-        </style>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+    <title>Burger King!</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script scr="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        h1 {
+            color: coral;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 40px;
+            text-align: center
+        }
+
+        h2 {
+            color: rgb(82, 82, 82);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            text-align: center
+        }
+
+        .entry-form {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    {{{ body }}}
+    <script>
+
+$(function() {
+  $(".create-form").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    var burgerName = {
+      name: $("#burgeradd").val().trim()
+    };
+
+    // Send the POST request.
+    $.ajax("/api/add-burger", {
+      type: "POST",
+      data: burgerName
+    }).then(
+      function() {
+        console.log("created new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+});
+
+
+
+    </script>
+</body>
+
 </html>

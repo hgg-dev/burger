@@ -1,16 +1,16 @@
-var express = require("express");
+// var express = require("express");
 var orm = require("../config/orm.js");
 
 
 var burger = {
     all: function(cb) {
-      orm.selectAll("cats", function(res) {
+      orm.selectAll("burgers", function(res) {
         cb(res);
       });
     },
     // The variables cols and vals are arrays.
-    create: function(cols, vals, cb) {
-      orm.create("cats", cols, vals, function(res) {
+    insertOne: function(vals, cb) {
+      orm.insertOne(vals, function(res) {
         cb(res);
       });
     },
