@@ -2,18 +2,23 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Burger King!</h1>
-      <h2>What do you want to eat?</h2>
+    
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <ul>
+  <div class="row flex-parent">
+    <div class="col-md-6 left-box">
+      <h2>What do you want to eat?</h2>
+      
+      <form><ul>
         {{#each burgers}}
-        <h3>{{burger_name}}</h3>
+        <button  type="submit" class="burger-button">{{burger_name}}</button>
         {{/each}}
       </ul>
+     </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 right-box">
+      <h2>I ate these already.</h2>
+
     </div>
   </div>
   <div class="row">
@@ -24,8 +29,9 @@
           <input type="text" id="burgeradd" name="burger" placeholder="Burger you would like to eat?"
             style="margin: 30px; font-size: 20px">
         </div>
-        <button type="submit" class="create-form">Submit</button>
+ <div><button type="submit" class="create-form" style="font-size: 30px; background: blanchedalmond;}"><i class="fas fa-hamburger"></i> Submit</button></div>
       </form>
+        <div  class="burger-button">test</div>
     </div>
   </div>
 </div>
