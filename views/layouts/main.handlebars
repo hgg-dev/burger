@@ -3,69 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  {{!-- <link rel="stylesheet" href="../../public/assets/css/burger_style.css" type="text/css" /> --}}
+  <link rel="stylesheet" href="/assets/css/burger_style.css" />
 
   <title>Burger King!</title>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script scr="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/da2b48d07d.js" crossorigin="anonymous"></script>
-  
+
   <style>
-    body {
-      background-color: lightgrey;
-    }
 
-    h1 {
-      color: coral;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 40px;
-      text-align: center
-    }
 
-    h2 {
-      color: rgb(82, 82, 82);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 20px;
-      text-align: center
-    }
-
-    .entry-form {
-      text-align: center;
-    }
-
-    .flex-parent {
-      display: flex;
-      justify-content: center;
-    }
-
-    .left-box {
-      margin: 10px;
-      background: coral;
-      padding: 20px;
-      min-width: 300px;
-
-    }
-
-    .right-box {
-      margin: 10px;
-      background: rgb(190, 255, 187);
-      padding: 20px;
-      min-width: 300px;
-    } 
-    p {
-      line-height: 50%;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-    button{
-        margin: 5px;
-        padding: 5px;
-    }
-
-    ul {
-      display: flex;
-    flex-flow: column;
-    }
-  
   </style>
 
 </head>
@@ -74,12 +21,17 @@
   {{{ body }}}
   <script>
 
-    $(document).ready(function() {
-      $(".create-form").on("submit", function (event) {
+    $(document).ready(function () {
+
+      $(".create-form").on("submit", function (e) {
+        e.preventDefault();
+
         // Make sure to preventDefault on a submit event.
         var burgerName = {
           name: $("#burgeradd").val().trim()
         };
+
+        $(".loader").css("display", "block").hide(5000);
 
         // Send the POST request.
         $.ajax("/api/add-burger", {
@@ -88,45 +40,37 @@
         }).then(
           function () {
             console.log("created new burger");
+
             // Reload the page to get the updated list
-            location.reload();
-          }, 
+
+          }
         );
       });
 
-      $(".burger-button").on("submit", function (e) {
+      $(".burger-button").on("click", function (e) {
         // Make sure to preventDefault on a submit event.
-        e.preventdefault();
+        e.preventDefault();
         console.log("works");
-          var burgerName = {
-          name: $(this).val().trim()
+
+        var burgerName = {
+          name: $(this).text()
         };
 
         // Send the POST request.
         $.ajax("/api/ate-burger", {
-          type: "Post",
+          type: "post",
           data: burgerName
         }).then(
           function () {
-            console.log("created new burger");
+            console.log("ate burger");
             // Reload the page to get the updated list
             location.reload();
-          }, 
+          },
         );
-      });  
-
-
-
-{{!-- 
-      $(".burger_button").click(function(){
-        
-        console.log("triggered")
-        $(this).hide(500);
-      }); --}}
+      });
 
 
     });
-
   </script>
 </body>
 

@@ -1,9 +1,17 @@
+
+// to do
+// 1. Split burger to 1 and 2
+// update 'deleted' burger to 2
+// append all based on condition
+
 ;
 const express = require('express')
 var exphbs = require("express-handlebars")
 var path = require("path");
 var PORT = process.env.PORT || 8080;
 const app = express()
+
+app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
